@@ -15,5 +15,5 @@ COPY requirements.txt .
 #In requirements.txt I have all the libraries I need in order to execute this code (actually here I only need art).
 RUN pip install -r requirements.txt
 				
-# this is simply running "python ./main.py" in our container terminal
+# this is simply running "python ./main.py" in our container terminal. CMD does not work with Python ArgumentParser 
 ENTRYPOINT ["python", "./main.py"]
