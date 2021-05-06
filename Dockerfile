@@ -1,19 +1,17 @@
-#Dockerfile to build my first container image. It is just for get familiar with containers.
+#Dockerfile to build my first container image. It is based on matthewfeickert/docker-python3-ubuntu:3.8.7 container.
 
-FROM python:3.8
+FROM matthewfeickert/docker-python3-ubuntu:3.8.7
 
-#This is not the directory of our windows/linux system. This is the working directory of our Docker virtual env, 
-#this is where our container is going to be. It is pretty common to use this paht.
-WORKDIR /usr/src/python_art 
+#The path /home/docker was created by matthewfeickert in its ubuntu container
+WORKDIR /home/docker
+RUN mkdir python_art
 
-#COPY source_path destination_path --> I think that if I say "." as destination_path,
-#then main will be located in the workdir I previously specified.
+WORKDIR /home/docker/python_art
+#COPY source_path destination_path --> I think that if I say "." as destination_path, then main will be located in the workdir I previously specified.
 COPY main.py . 
 COPY requirements.txt . 
+COPY run.sh .
 
 
 #In requirements.txt I have all the libraries I need in order to execute this code (actually here I only need art).
 RUN pip install -r requirements.txt
-				
-# this is simply running "python ./main.py" in our container terminal. CMD does not work with Python ArgumentParser 
-ENTRYPOINT ["python", "./main.py"]

@@ -5,7 +5,7 @@ echo "Do you want a random font? (y/n)"
 read answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
-    docker run -ti python-art --input_word="${word}" --random_font='True'
+    python ./main.py --input_word="${word}" --random_font='True' #docker run -ti python-art --input_word="${word}" --random_font='True'
 else
-    docker run -ti python-art --input_word="${word}" --random_font='False'
+    python ./main.py --input_word="${word}" --random_font='False' #docker run -ti python-art --input_word="${word}" --random_font='False'
 fi
