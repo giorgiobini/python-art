@@ -13,7 +13,7 @@ COPY requirements.txt .
 COPY run.sh .
 
 #if I don't run this, then run.sh will return "Permission denied" on bash
-RUN ["chmod", "+x", "/home/docker/python_art/run.sh"]
+RUN chmod +x run.sh
 
 #In requirements.txt I have all the libraries I need in order to execute this code (actually here I only need art).
 RUN pip install -r requirements.txt
